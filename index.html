@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamento de Alojamiento — Asamblea Regional 2026</title>
+    <meta name="description"
+          content="Guía de referencia del Departamento de Alojamiento para la Asamblea Regional 2026 «Felices para Siempre»: contactos, manejo de reclamos y formulario de registro.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --ink: #12312C;
+            --teal: #2E6355;
+            --teal-dim: #3E7566;
+            --sage: #6E8F7E;
+            --paper: #F3F6F1;
+            --paper-alt: #E7EDE7;
+            --card: #FDFDFB;
+            --gold: #B98A42;
+            --gold-ink: #7A5A26;
+            --brick: #8C4130;
+            --brick-bg: #F1E1D9;
+            --brick-border: #D8AF9C;
+            --line: #D8DFD7;
+            --shadow: 0 10px 30px -18px rgba(18, 49, 44, 0.35);
+
+            --font-display: 'Sora', system-ui, sans-serif;
+            --font-body: 'Work Sans', system-ui, sans-serif;
+            --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+            --space-1: 0.5rem;
+            --space-2: 0.9rem;
+            --space-3: 1.5rem;
+            --space-4: 2.25rem;
+            --space-5: 3.5rem;
+            --radius: 14px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            color: var(--ink);
+            margin: 0;
+            line-height: 1.15;
+        }
+
+        p {
+            margin: 0 0 1em;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: var(--teal);
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.8em 1.2em;
+            border-radius: 6px;
+            z-index: 200;
+        }
+
+        .skip-link:focus {
+            left: 1em;
+            top: 1em;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        /* Shared signature mark: a single thin rule, used instead of iconography
+           to introduce the hero, each section heading, the form, and the footer. */
+        .rule {
+            width: 44px;
+            height: 2px;
+            background: var(--gold);
+            border: none;
+            margin: 0 0 1.1em;
+        }
+
+        /* ---------- Header / nav ---------- */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--ink);
+            color: #EFEFEA;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-2);
+            padding: 0.9rem var(--space-3);
+        }
+
+        .brand {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .site-header nav {
+            display: flex;
+            gap: 1.35rem;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .site-header nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .site-header nav a {
+            color: #BFD2C9;
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            white-space: nowrap;
+            padding-bottom: 0.2em;
+            border-bottom: 1px solid transparent;
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .site-header nav a:hover,
+        .site-header nav a:focus-visible {
+            color: #fff;
+            border-bottom-color: var(--gold);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            background: var(--ink);
+            color: #F4F1E8;
+        }
+
+        .hero-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--space-5) var(--space-3);
+            text-align: left;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.72rem;
+            color: var(--gold);
+            margin: 0 0 1.1em;
+        }
+
+        .hero h1 {
+            font-weight: 300;
+            font-size: clamp(2.1rem, 7vw, 3.3rem);
+            letter-spacing: 0.01em;
+            color: #fff;
+            margin-bottom: 0.55em;
+        }
+
+        .hero-lede {
+            font-size: 1.02rem;
+            color: #D3DDD6;
+            max-width: 46ch;
+            margin-bottom: 2em;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            color: #F4F1E8;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid rgba(244, 241, 232, 0.45);
+            transition: border-color 0.15s ease;
+        }
+
+        .hero-cta:hover, .hero-cta:focus-visible {
+            border-color: #F4F1E8;
+        }
+
+        /* ---------- Sections ---------- */
+        .section {
+            padding: var(--space-5) 0;
+        }
+
+        .section-alt {
+            background: var(--paper-alt);
+        }
+
+        .section-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 var(--space-3);
+        }
+
+        .section h2 {
+            font-weight: 600;
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
+            margin-bottom: 0.85em;
+        }
+
+        .section > .section-inner > p {
+            max-width: 64ch;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ---------- Contact cards ---------- */
+        .contact-grid {
+            display: grid;
+            gap: 0.9rem;
+            grid-template-columns:1fr;
+            margin: 1.6em 0;
+        }
+
+        .contact-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-left: 2px solid var(--teal);
+            border-radius: 4px;
+            padding: 1.1rem 1.2rem;
+        }
+
+        .contact-role {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.66rem;
+            color: var(--sage);
+            margin: 0 0 0.5em;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 0 0 0.55em;
+            color: var(--ink);
+        }
+
+        .contact-phone {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--teal);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-phone:hover, .contact-phone:focus-visible {
+            border-bottom-color: var(--teal);
+        }
+
+        /* ---------- PDF CTA ---------- */
+        .pdf-cta {
+            margin-top: 1.8em;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-left: 2px solid var(--gold);
+            border-radius: 4px;
+            padding: 1.3rem 1.4rem;
+        }
+
+        .pdf-title {
+            font-weight: 600;
+            margin: 0 0 0.35em;
+            color: var(--ink);
+        }
+
+        .pdf-desc {
+            font-size: 0.92rem;
+            color: #4C5B54;
+            margin: 0 0 1.1em;
+            max-width: 52ch;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65em;
+            background: var(--gold);
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            padding: 0.9em 1.6em;
+            border-radius: 8px;
+            box-shadow: 0 10px 22px -12px rgba(122, 90, 38, 0.6);
+            transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-download:hover, .btn-download:focus-visible {
+            background: var(--gold-ink);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px -12px rgba(122, 90, 38, 0.7);
+        }
+
+        .btn-download .pdf-icon {
+            width: 1.5em;
+            height: 1.5em;
+            flex-shrink: 0;
+        }
+
+        /* ---------- Checklist ---------- */
+        .checklist {
+            list-style: none;
+            margin: 1.5em 0;
+            padding: 0;
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .checklist li {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 0.9rem 1.1rem 0.9rem 2.2rem;
+            font-size: 0.96rem;
+        }
+
+        .checklist li::before {
+            content: "";
+            position: absolute;
+            left: 1.05rem;
+            top: 1.15rem;
+            width: 6px;
+            height: 6px;
+            background: var(--teal);
+        }
+
+        /* ---------- Alert ---------- */
+        .alert {
+            background: var(--brick-bg);
+            border: 1px solid var(--brick-border);
+            border-left: 3px solid var(--brick);
+            border-radius: 4px;
+            padding: 1.1rem 1.3rem;
+            margin-top: 1.6em;
+        }
+
+        .alert p {
+            color: #5C2A1D;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .alert strong {
+            color: var(--brick);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: 0.88em;
+        }
+
+        /* ---------- Form ---------- */
+        .form-card {
+            margin-top: 2.2em;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1.6rem;
+        }
+
+        .form-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 1.2em;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns:1fr;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4em;
+        }
+
+        .field label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--sage);
+        }
+
+        .field input, .field textarea {
+            font-family: var(--font-body);
+            font-size: 0.98rem;
+            color: var(--ink);
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 0.7em 0.8em;
+            resize: vertical;
+        }
+
+        .field input:focus, .field textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(46, 99, 85, 0.16);
+        }
+
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .btn-submit {
+            justify-self: start;
+            display: inline-block;
+            background: var(--teal);
+            color: #fff;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 6px;
+            padding: 0.85em 1.5em;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .btn-submit:hover {
+            background: #264F44;
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: progress;
+        }
+
+        .form-status {
+            margin: 0;
+            font-size: 0.92rem;
+            min-height: 1.4em;
+        }
+
+        .form-status[data-state="ok"] {
+            color: var(--teal);
+        }
+
+        .form-status[data-state="error"] {
+            color: var(--brick);
+        }
+
+        .form-status[data-state="sending"] {
+            color: var(--sage);
+        }
+
+        /* ---------- Footer ---------- */
+        .site-footer {
+            background: var(--ink);
+            color: #CFE0D8;
+            text-align: center;
+            padding: var(--space-4) var(--space-3);
+        }
+
+        .site-footer .rule {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .site-footer p {
+            margin: 0.15em 0;
+            font-size: 0.9rem;
+        }
+
+        .site-footer p:first-of-type {
+            font-weight: 600;
+            color: #fff;
+            font-family: var(--font-display);
+        }
+
+        /* ---------- Breakpoints ---------- */
+        @media (min-width: 640px) {
+            .contact-grid {
+                grid-template-columns:1fr 1fr;
+            }
+
+            .contact-grid .contact-card:last-child {
+                grid-column: 1 / -1;
+            }
+
+            form {
+                grid-template-columns:1fr 1fr;
+            }
+
+            .field-full {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-inner {
+                padding: 0.95rem var(--space-4);
+            }
+
+            .hero-inner {
+                padding: 6rem var(--space-4);
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+
+            .section-inner {
+                padding: 0 var(--space-4);
+            }
+
+            .contact-grid {
+                grid-template-columns:1fr 1fr 1fr;
+            }
+
+            .contact-grid .contact-card:last-child {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<header class="site-header">
+    <div class="nav-inner">
+        <span class="brand">Alojamiento</span>
+        <nav aria-label="Secciones de la página">
+            <a href="#main">Inicio</a>
+            <a href="#introduccion">Introducción</a>
+            <a href="#reclamos">Reclamos</a>
+            <a href="#formulario">Formulario</a>
+        </nav>
+    </div>
+</header>
+
+<main id="main">
+
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">Asamblea Regional 2026 · Felices para Siempre</p>
+            <h1>Departamento de Alojamiento</h1>
+            <p class="hero-lede">Guía de referencia rápida para los hermanos voluntarios: a quién contactar, cómo
+                atender un reclamo y cómo dejar registro de cada caso.</p>
+            <a class="hero-cta" href="#introduccion">Ver la guía</a>
+        </div>
+    </section>
+
+    <section id="introduccion" class="section reveal" aria-labelledby="introduccion-title">
+        <div class="section-inner">
+            <hr class="rule" aria-hidden="true">
+            <h2 id="introduccion-title">Introducción</h2>
+            <p>El Departamento de Alojamiento debe estar ubicado en un lugar donde pueda ser encontrado fácilmente por
+                los hermanos que llegan a la asamblea. Los hermanos del Departamento de Alojamiento trabajan bajo la
+                dirección del superintendente de alojamiento y deben buscar su orientación cuando surjan situaciones
+                nuevas o poco comunes.</p>
+
+            <div class="contact-grid">
+                <article class="contact-card">
+                    <p class="contact-role">Superintendente de Alojamiento CAR</p>
+                    <p class="contact-name">Gerardo Betbese</p>
+                    <a class="contact-phone" href="tel:+554796149563">+55 47 9614-9563</a>
+                </article>
+                <article class="contact-card">
+                    <p class="contact-role">Aux. Superintendente de Alojamiento CAR</p>
+                    <p class="contact-name">Pablo Lombardo</p>
+                    <a class="contact-phone" href="tel:+554884514735">+55 48 8451-4735</a>
+                </article>
+                <article class="contact-card">
+                    <p class="contact-role">Superintendente de Alojamiento</p>
+                    <p class="contact-name">Felipe Cuevas</p>
+                    <a class="contact-phone" href="tel:+56994513339">+569 9451 3339</a>
+                </article>
+            </div>
+
+            <div class="pdf-cta">
+                <p class="pdf-title">Hoteles Recomendados</p>
+                <p class="pdf-desc">Guía útil para asambleístas que llegan de sorpresa y necesitan alojamiento.
+                    Descárgala y compártela con quien la necesite.</p>
+                <a class="btn-download" href="hoteles-recomendados-2026.pdf" download>
+                    <svg class="pdf-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M6 2.5h8.3L19 7.2V21a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z"
+                              fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"
+                              stroke-linecap="round"/>
+                        <path d="M14.3 2.5V7a1 1 0 0 0 1 1H19" fill="none" stroke="currentColor" stroke-width="1.6"
+                              stroke-linejoin="round" stroke-linecap="round"/>
+                        <text x="12" y="16.6" text-anchor="middle" font-family="'IBM Plex Mono', monospace"
+                              font-size="6.3" font-weight="700" letter-spacing="0.2" fill="currentColor">PDF
+                        </text>
+                    </svg>
+                    Descargar PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="reclamos" class="section section-alt reveal" aria-labelledby="reclamos-title">
+        <div class="section-inner">
+            <hr class="rule" aria-hidden="true">
+            <h2 id="reclamos-title">Cómo atender reclamos</h2>
+            <p>Algunos reclamos que llegan al Departamento de Alojamiento son difíciles de resolver, como cuando a un
+                asambleísta se le asigna una habitación donde está permitido fumar. Los hermanos que trabajan en el
+                Departamento de Alojamiento deben saber lo siguiente:</p>
+
+            <ul class="checklist">
+                <li>¿Cuál es realmente el problema o la queja?</li>
+                <li>¿Qué ha hecho ya el asambleísta para resolver el problema? (Por ejemplo, ¿con quién habló en el
+                    hotel?)
+                </li>
+                <li>¿Qué espera el congresista que haga el Departamento de Alojamiento? (A veces, basta con informar al
+                    Departamento de Alojamiento.)
+                </li>
+                <li>¿El problema tiene solución? (¿O se trataría más bien de ayudar al congresista a ajustar su punto de
+                    vista sobre la situación?)
+                </li>
+            </ul>
+
+            <aside class="alert" role="note">
+                <p><strong>Situación urgente - Necesidad de Alojamiento</strong></p>
+                <p>Si el asambleísta llegó de sorpresa a la Asamblea Regional y necesita alojamiento urgente, hay que
+                    ponerse en contacto de inmediato con alguno de los 3 encargados del Departamento de Alojamiento
+                    <em>(datos de contacto más arriba)</em>.</p>
+                <p>En ningún momento debe revelarse al asambleísta que existen alojamientos disponibles, porque cabe la
+                    posibilidad de que no cuente con los requisitos para solicitarlo. Por eso se debe llamar de
+                    inmediato a alguno de los 3 encargados y ver cómo proceder.</p>
+            </aside>
+        </div>
+    </section>
+
+    <section id="voluntariado" class="section reveal" aria-labelledby="voluntariado-title">
+        <div class="section-inner">
+            <hr class="rule" aria-hidden="true">
+            <h2 id="voluntariado-title">Enfoque de los voluntarios</h2>
+            <p>Los hermanos del Departamento de Alojamiento deben estar muy interesados en resolver los problemas que
+                les comunican sus hermanos (Pro. 3:27; 21:13).</p>
+            <p>Se debe llevar un registro resumido de los comentarios y
+                quejas que llegan al Departamento de Alojamiento. Esto ayuda a identificar situaciones recurrentes. Para
+                eso, rellene el siguiente formulario:</p>
+
+            <div id="formulario" class="form-card">
+                <h3>Formulario de registro</h3>
+
+                <form id="registro-form" novalidate>
+                    <div class="field honeypot" aria-hidden="true">
+                        <label for="website">No completar este campo</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="field">
+                        <label for="nombre">Nombre del asambleísta</label>
+                        <input required id="nombre" name="nombre" type="text" autocomplete="name">
+                    </div>
+
+                    <div class="field">
+                        <label for="congregacion">Congregación</label>
+                        <input required id="congregacion" name="congregacion" type="text">
+                    </div>
+
+                    <div class="field">
+                        <label for="telefono">Teléfono del asambleísta</label>
+                        <input required id="telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel">
+                    </div>
+
+                    <div class="field">
+                        <label for="hotel">Hotel o alojamiento involucrado</label>
+                        <input required id="hotel" name="hotel" type="text">
+                    </div>
+
+                    <div class="field field-full">
+                        <label for="tipo">Tipo de comentario o queja</label>
+                        <input required id="tipo" name="tipo" type="text">
+                    </div>
+
+                    <div class="field field-full">
+                        <label for="descripcion">Cómo se resolvió el problema (incluye con quién se habló en el
+                            hotel)</label>
+                        <textarea required id="descripcion" name="descripcion" rows="3"></textarea>
+                    </div>
+
+                    <div class="field field-full">
+                        <label for="otro">Cualquier otro dato pertinente</label>
+                        <textarea id="otro" name="otro" rows="2"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar registro</button>
+                    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <hr class="rule" aria-hidden="true">
+    <p>Departamento de Alojamiento</p>
+    <p>Asamblea Regional 2026 — Felices para Siempre</p>
+</footer>
+
+<script>
+    // ------------------------------------------------------------------
+    // 1) Reveal-on-scroll for section entrances (subtle, respects
+    //    prefers-reduced-motion via the CSS above).
+    // ------------------------------------------------------------------
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, {threshold: 0.12});
+        revealEls.forEach(function (el) {
+            io.observe(el);
+        });
+    } else {
+        revealEls.forEach(function (el) {
+            el.classList.add('is-visible');
+        });
+    }
+
+    // ------------------------------------------------------------------
+    // 2) Formulario de registro -> Google Sheets
+    // ------------------------------------------------------------------
+    var GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycby19p-0aYlBCBCNDu8-5ZMc_yZZNSVnznKjtIk76Hu9K7TcD3vk1B8X7RilEImfvhG6/exec';
+
+    var form = document.getElementById('registro-form');
+    var status = document.getElementById('form-status');
+    var submitBtn = form.querySelector('.btn-submit');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Honeypot anti-spam: si este campo oculto viene lleno, se ignora.
+        if (form.website.value) {
+            return;
+        }
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        if (GOOGLE_SHEETS_ENDPOINT.indexOf('PEGA_AQUI') !== -1) {
+            status.dataset.state = 'error';
+            status.textContent = 'El formulario aún no está conectado a la hoja de cálculo. Por favor anota este caso a mano y avisa al encargado técnico.';
+            return;
+        }
+
+        var data = new FormData(form);
+        submitBtn.disabled = true;
+        status.dataset.state = 'sending';
+        status.textContent = 'Enviando…';
+
+        fetch(GOOGLE_SHEETS_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: data
+        }).then(function () {
+            status.dataset.state = 'ok';
+            status.textContent = '¡Registro enviado! Gracias por dejar constancia del caso.';
+            form.reset();
+        }).catch(function () {
+            status.dataset.state = 'error';
+            status.textContent = 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo, o anota el caso a mano.';
+        }).finally(function () {
+            submitBtn.disabled = false;
+        });
+    });
+</script>
+
+</body>
+</html>
