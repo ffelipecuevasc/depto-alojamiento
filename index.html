@@ -11,7 +11,8 @@
     <meta property="og:url" content="https://ffelipecuevasc.github.io/depto-alojamiento/">
     <meta property="og:site_name" content="Departamento de Alojamiento">
     <meta property="og:title" content="Departamento de Alojamiento — Asamblea Regional 2026">
-    <meta property="og:description" content="Guía de referencia del Departamento de Alojamiento para la Asamblea Regional 2026 «Felices para Siempre»: contactos, manejo de reclamos y formulario de registro.">
+    <meta property="og:description"
+          content="Guía de referencia del Departamento de Alojamiento para la Asamblea Regional 2026 «Felices para Siempre»: contactos, manejo de reclamos y formulario de registro.">
     <meta property="og:image" content="https://ffelipecuevasc.github.io/depto-alojamiento/image.png">
     <meta property="og:image:secure_url" content="https://ffelipecuevasc.github.io/depto-alojamiento/image.png">
     <meta property="og:image:type" content="image/png">
@@ -23,7 +24,8 @@
     <!-- Twitter / X (usa las mismas etiquetas OG como respaldo, pero esto asegura la tarjeta grande) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Departamento de Alojamiento — Asamblea Regional 2026">
-    <meta name="twitter:description" content="Guía de referencia del Departamento de Alojamiento para la Asamblea Regional 2026 «Felices para Siempre».">
+    <meta name="twitter:description"
+          content="Guía de referencia del Departamento de Alojamiento para la Asamblea Regional 2026 «Felices para Siempre».">
     <meta name="twitter:image" content="https://ffelipecuevasc.github.io/depto-alojamiento/image.png">
 
     <!-- Bonus: URL canónica, evita duplicados si alguien comparte el link sin la barra final -->
@@ -171,35 +173,115 @@
             white-space: nowrap;
         }
 
-        .site-header nav {
-            display: flex;
-            gap: 1.35rem;
-            overflow-x: auto;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        /* Botón hamburguesa: solo visible en pantallas pequeñas */
+        .nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            margin: -6px -8px -6px 0;
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #EFEFEA;
         }
 
-        .site-header nav::-webkit-scrollbar {
-            display: none;
+        .nav-toggle-bars {
+            position: relative;
+            display: block;
+            width: 22px;
+            height: 14px;
+        }
+
+        .nav-toggle-bars span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+        }
+
+        .nav-toggle-bars span:nth-child(1) {
+            top: 0;
+        }
+
+        .nav-toggle-bars span:nth-child(2) {
+            top: 6px;
+        }
+
+        .nav-toggle-bars span:nth-child(3) {
+            top: 12px;
+        }
+
+        /* Estado abierto: las barras se transforman en una X */
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(1) {
+            top: 6px;
+            transform: rotate(45deg);
+        }
+
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(3) {
+            top: 6px;
+            transform: rotate(-45deg);
+        }
+
+        /* Panel de navegación en móvil: se despliega bajo el encabezado */
+        .site-header nav {
+            display: grid;
+            grid-template-rows: 0fr;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--ink);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            visibility: hidden;
+            transition: grid-template-rows 0.28s ease, visibility 0.28s;
+        }
+
+        .site-header nav.is-open {
+            grid-template-rows: 1fr;
+            visibility: visible;
+        }
+
+        .site-header nav > a {
+            min-height: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            overflow: hidden;
         }
 
         .site-header nav a {
             color: #BFD2C9;
             text-decoration: none;
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.09em;
             white-space: nowrap;
-            padding-bottom: 0.2em;
+            padding: 0.95rem var(--space-3);
             border-bottom: 1px solid transparent;
-            transition: color 0.15s ease, border-color 0.15s ease;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
         }
 
         .site-header nav a:hover,
         .site-header nav a:focus-visible {
             color: #fff;
-            border-bottom-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         /* ---------- Hero ---------- */
@@ -549,6 +631,119 @@
             color: var(--sage);
         }
 
+        /* ---------- Modal de confirmación ---------- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3);
+            background: rgba(18, 49, 44, 0.55);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s;
+        }
+
+        .modal-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 2rem 1.75rem 1.75rem;
+            text-align: center;
+            box-shadow: 0 30px 60px -25px rgba(18, 49, 44, 0.55);
+            transform: translateY(16px) scale(0.97);
+            transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1);
+        }
+
+        .modal-overlay.is-open .modal-box {
+            transform: none;
+        }
+
+        .modal-check {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 1.2rem;
+            display: block;
+            color: var(--teal);
+        }
+
+        .modal-check circle {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            opacity: 0.35;
+        }
+
+        .modal-check path {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 26;
+            stroke-dashoffset: 26;
+        }
+
+        .modal-overlay.is-open .modal-check path {
+            animation: drawCheck 0.45s 0.15s ease-out forwards;
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .modal-check path {
+                stroke-dashoffset: 0;
+            }
+
+            .modal-overlay.is-open .modal-check path {
+                animation: none;
+            }
+        }
+
+        .modal-box h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.6em;
+        }
+
+        .modal-box p {
+            font-size: 0.95rem;
+            color: #4C5B54;
+            margin: 0 0 1.6em;
+        }
+
+        .modal-close {
+            display: inline-block;
+            background: var(--teal);
+            color: #fff;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.92rem;
+            border: none;
+            border-radius: 6px;
+            padding: 0.8em 1.8em;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .modal-close:hover {
+            background: #264F44;
+        }
+
         /* ---------- Footer ---------- */
         .site-footer {
             background: var(--ink);
@@ -574,6 +769,43 @@
         }
 
         /* ---------- Breakpoints ---------- */
+        /* Desde 760px hay espacio de sobra: se oculta el botón y la
+           navegación vuelve a ser una barra horizontal normal. */
+        @media (min-width: 760px) {
+            .nav-toggle {
+                display: none;
+            }
+
+            .site-header nav {
+                display: block;
+                position: static;
+                background: none;
+                border-bottom: none;
+                overflow: visible;
+                visibility: visible;
+                transition: none;
+            }
+
+            .nav-links {
+                flex-direction: row;
+                gap: 1.35rem;
+                overflow: visible;
+            }
+
+            .site-header nav a {
+                font-size: 0.7rem;
+                padding: 0 0 0.2em;
+                border-top: none;
+                border-bottom: 1px solid transparent;
+            }
+
+            .site-header nav a:hover,
+            .site-header nav a:focus-visible {
+                background: none;
+                border-bottom-color: var(--gold);
+            }
+        }
+
         @media (min-width: 640px) {
             .contact-grid {
                 grid-template-columns:1fr 1fr;
@@ -626,11 +858,17 @@
 <header class="site-header">
     <div class="nav-inner">
         <span class="brand">Alojamiento</span>
-        <nav aria-label="Secciones de la página">
-            <a href="#main">Inicio</a>
-            <a href="#introduccion">Introducción</a>
-            <a href="#reclamos">Reclamos</a>
-            <a href="#formulario">Formulario</a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav"
+                aria-label="Abrir menú">
+            <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <nav id="site-nav" aria-label="Secciones de la página">
+            <div class="nav-links">
+                <a href="#main">Inicio</a>
+                <a href="#introduccion">Introducción</a>
+                <a href="#reclamos">Reclamos</a>
+                <a href="#formulario">Formulario</a>
+            </div>
         </nav>
     </div>
 </header>
@@ -792,6 +1030,19 @@
 
 </main>
 
+<div class="modal-overlay" id="modal-exito" role="dialog" aria-modal="true" aria-labelledby="modal-titulo"
+     aria-describedby="modal-texto" hidden>
+    <div class="modal-box">
+        <svg class="modal-check" viewBox="0 0 52 52" aria-hidden="true" focusable="false">
+            <circle cx="26" cy="26" r="24"/>
+            <path d="M16 26.5 23 33.5 36.5 20"/>
+        </svg>
+        <h2 id="modal-titulo">Registro enviado</h2>
+        <p id="modal-texto">Los datos quedaron guardados correctamente. Gracias por dejar constancia del caso.</p>
+        <button type="button" class="modal-close" id="modal-close">Cerrar</button>
+    </div>
+</div>
+
 <footer class="site-footer">
     <hr class="rule" aria-hidden="true">
     <p>Departamento de Alojamiento</p>
@@ -799,76 +1050,173 @@
 </footer>
 
 <script>
+    /* ==================================================================
+       Departamento de Alojamiento — Asamblea Regional 2026
+       Scripts de la página (ES2017+)
+       ================================================================== */
+
     // ------------------------------------------------------------------
-    // 1) Reveal-on-scroll for section entrances (subtle, respects
-    //    prefers-reduced-motion via the CSS above).
+    // 1) Aparición progresiva de las secciones al hacer scroll.
+    //    El respeto a prefers-reduced-motion se maneja desde el CSS.
     // ------------------------------------------------------------------
-    var revealEls = document.querySelectorAll('.reveal');
+    const revealEls = document.querySelectorAll('.reveal');
+
     if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    io.unobserve(entry.target);
-                }
+        const io = new IntersectionObserver((entries, observer) => {
+            entries.forEach(({isIntersecting, target}) => {
+                if (!isIntersecting) return;
+                target.classList.add('is-visible');
+                observer.unobserve(target);
             });
         }, {threshold: 0.12});
-        revealEls.forEach(function (el) {
-            io.observe(el);
-        });
+
+        revealEls.forEach((el) => io.observe(el));
     } else {
-        revealEls.forEach(function (el) {
-            el.classList.add('is-visible');
-        });
+        revealEls.forEach((el) => el.classList.add('is-visible'));
     }
 
     // ------------------------------------------------------------------
-    // 2) Formulario de registro -> Google Sheets
+    // 2) Menú de navegación en móvil.
     // ------------------------------------------------------------------
-    var GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycby19p-0aYlBCBCNDu8-5ZMc_yZZNSVnznKjtIk76Hu9K7TcD3vk1B8X7RilEImfvhG6/exec';
+    const navToggle = document.getElementById('nav-toggle');
+    const siteNav = document.getElementById('site-nav');
 
-    var form = document.getElementById('registro-form');
-    var status = document.getElementById('form-status');
-    var submitBtn = form.querySelector('.btn-submit');
+    const setNav = (open) => {
+        siteNav.classList.toggle('is-open', open);
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+    const isNavOpen = () => navToggle.getAttribute('aria-expanded') === 'true';
+
+    navToggle.addEventListener('click', () => setNav(!isNavOpen()));
+
+    // Al tocar un enlace, el panel se cierra y deja ver la sección.
+    siteNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setNav(false));
+    });
+
+    // Cerrar al tocar fuera del encabezado.
+    document.addEventListener('click', ({target}) => {
+        if (!isNavOpen()) return;
+        if (target.closest('.site-header')) return;
+        setNav(false);
+    });
+
+    // Si la ventana crece hasta el layout de escritorio, se limpia el estado.
+    // Se consulta con cuidado: Safari 13 y anteriores no tienen
+    // addEventListener en MediaQueryList, y un fallo acá no debe impedir
+    // que se registre el resto de la página.
+    if (typeof window.matchMedia === 'function') {
+        const desktopQuery = window.matchMedia('(min-width: 760px)');
+        const onDesktopChange = ({matches}) => {
+            if (matches) setNav(false);
+        };
+
+        if (typeof desktopQuery.addEventListener === 'function') {
+            desktopQuery.addEventListener('change', onDesktopChange);
+        } else if (typeof desktopQuery.addListener === 'function') {
+            desktopQuery.addListener(onDesktopChange);
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // 3) Modal de confirmación.
+    // ------------------------------------------------------------------
+    const modal = document.getElementById('modal-exito');
+    const modalCloseBtn = document.getElementById('modal-close');
+    let lastFocused = null;
+
+    const openModal = () => {
+        lastFocused = document.activeElement;
+        modal.hidden = false;
+        // Se fuerza un reflow para que la transición de entrada se ejecute.
+        void modal.offsetWidth;
+        modal.classList.add('is-open');
+        modalCloseBtn.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('is-open');
+        window.setTimeout(() => {
+            modal.hidden = true;
+        }, 250);
+        if (lastFocused) lastFocused.focus();
+    };
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', ({target}) => {
+        if (target === modal) closeModal();
+    });
+
+    // Escape cierra el modal; si está cerrado, cierra el menú.
+    document.addEventListener('keydown', ({key}) => {
+        if (key !== 'Escape') return;
+        if (!modal.hidden) {
+            closeModal();
+        } else if (isNavOpen()) {
+            setNav(false);
+            navToggle.focus();
+        }
+    });
+
+    // ------------------------------------------------------------------
+    // 4) Formulario de registro -> Google Sheets
+    //
+    //    Nota: la variable NO puede llamarse `status`. En el ámbito global
+    //    `status` es una propiedad heredada de window de tipo string, y
+    //    asignarle un elemento lo convierte en texto, rompiendo el envío.
+    // ------------------------------------------------------------------
+    const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycby19p-0aYlBCBCNDu8-5ZMc_yZZNSVnznKjtIk76Hu9K7TcD3vk1B8X7RilEImfvhG6/exec';
+
+    const form = document.getElementById('registro-form');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = form.querySelector('.btn-submit');
+
+    const setStatus = (state, message) => {
+        statusEl.dataset.state = state;
+        statusEl.textContent = message;
+    };
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
         // Honeypot anti-spam: si este campo oculto viene lleno, se ignora.
-        if (form.website.value) {
-            return;
-        }
+        const honeypot = form.elements.namedItem('website');
+        if (honeypot && honeypot.value) return;
 
         if (!form.checkValidity()) {
             form.reportValidity();
             return;
         }
 
-        if (GOOGLE_SHEETS_ENDPOINT.indexOf('PEGA_AQUI') !== -1) {
-            status.dataset.state = 'error';
-            status.textContent = 'El formulario aún no está conectado a la hoja de cálculo. Por favor anota este caso a mano y avisa al encargado técnico.';
-            return;
-        }
-
-        var data = new FormData(form);
         submitBtn.disabled = true;
-        status.dataset.state = 'sending';
-        status.textContent = 'Enviando…';
+        setStatus('sending', 'Enviando…');
 
-        fetch(GOOGLE_SHEETS_ENDPOINT, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: data
-        }).then(function () {
-            status.dataset.state = 'ok';
-            status.textContent = '¡Registro enviado! Gracias por dejar constancia del caso.';
+        // URLSearchParams envía application/x-www-form-urlencoded, que es lo
+        // que Apps Script sabe leer en e.parameter. Con FormData el cuerpo
+        // viaja como multipart/form-data y llega vacío al servidor.
+        const payload = new URLSearchParams(new FormData(form));
+        payload.delete('website');
+
+        try {
+            await fetch(GOOGLE_SHEETS_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+                body: payload.toString()
+            });
+
             form.reset();
-        }).catch(function () {
-            status.dataset.state = 'error';
-            status.textContent = 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo, o anota el caso a mano.';
-        }).finally(function () {
+            setStatus('ok', 'Registro enviado correctamente.');
+            openModal();
+        } catch (error) {
+            console.error('Error al enviar el registro:', error);
+            setStatus('error', 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo, o anota el caso a mano.');
+        } finally {
             submitBtn.disabled = false;
-        });
+        }
     });
 </script>
 
