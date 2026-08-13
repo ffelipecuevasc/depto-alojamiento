@@ -1201,12 +1201,25 @@
         payload.delete('website');
 
         try {
-            await fetch(GOOGLE_SHEETS_ENDPOINT, {
+            // Sin 'no-cors' podemos LEER la respuesta y confirmar de verdad
+            // que la fila se guardó. Con respuesta opaca, el navegador da por
+            // exitosa incluso una respuesta 404, y el aviso mentía.
+            // No se fija Content-Type a mano: el navegador pone el correcto
+            // para URLSearchParams y así se evita el preflight OPTIONS, que
+            // Apps Script no sabe responder.
+            const response = await fetch(GOOGLE_SHEETS_ENDPOINT, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-                body: payload.toString()
+                body: payload
             });
+
+            if (!response.ok) {
+                throw new Error(`El servidor respondió ${response.status}`);
+            }
+
+            const data = await response.json();
+            if (data.result !== 'success') {
+                throw new Error(data.message || 'El servidor rechazó el registro');
+            }
 
             form.reset();
             setStatus('ok', 'Registro enviado correctamente.');
