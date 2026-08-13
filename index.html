@@ -768,6 +768,217 @@
             font-family: var(--font-display);
         }
 
+        /* ---------- Calendario de asignaciones ---------- */
+        .schedule {
+            margin-top: 1.8em;
+        }
+
+        .schedule-head {
+            margin-bottom: 1.1em;
+        }
+
+        .schedule-kicker {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            font-size: 0.66rem;
+            color: var(--gold-ink);
+            margin: 0 0 0.5em;
+        }
+
+        .schedule-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--ink);
+            margin: 0 0 0.35em;
+        }
+
+        .schedule-desc {
+            font-size: 0.92rem;
+            color: #4C5B54;
+            margin: 0;
+            max-width: 52ch;
+        }
+
+        .schedule-grid {
+            display: grid;
+            gap: 0.9rem;
+            grid-template-columns: 1fr;
+        }
+
+        .day-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .day-head {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: var(--ink);
+            padding: 0.8rem 1.1rem;
+        }
+
+        .day-head .day-icon {
+            width: 1.2rem;
+            height: 1.2rem;
+            flex-shrink: 0;
+            color: var(--gold);
+        }
+
+        .day-name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            color: #fff;
+            margin: 0;
+        }
+
+        .day-date {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.64rem;
+            color: rgba(244, 241, 232, 0.72);
+            margin: 0.15em 0 0;
+        }
+
+        .shift {
+            padding: 0.9rem 1.1rem;
+            border-top: 1px solid var(--line);
+            border-left: 2px solid transparent;
+        }
+
+        .shift-am {
+            background: #EDF3F0;
+            border-left-color: var(--teal);
+        }
+
+        .shift-pm {
+            background: #FAF3E7;
+            border-left-color: var(--gold);
+        }
+
+        .shift-aux {
+            background: #F1F4EE;
+            border-left-color: var(--sage);
+        }
+
+        .shift-label {
+            display: flex;
+            align-items: center;
+            gap: 0.45em;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-size: 0.66rem;
+            margin: 0 0 0.2em;
+        }
+
+        .shift-label .shift-icon {
+            width: 1rem;
+            height: 1rem;
+            flex-shrink: 0;
+        }
+
+        .shift-am .shift-label {
+            color: var(--teal);
+        }
+
+        .shift-pm .shift-label {
+            color: var(--gold-ink);
+        }
+
+        .shift-aux .shift-label {
+            color: #5B7566;
+        }
+
+        .shift-time {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            line-height: 1.45;
+            color: var(--sage);
+            margin: 0 0 0.7em;
+        }
+
+        .shift-people {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 0.3rem;
+        }
+
+        .shift-people li {
+            position: relative;
+            padding-left: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.35;
+            color: var(--ink);
+        }
+
+        .shift-people li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+        }
+
+        .shift-am .shift-people li::before {
+            background: var(--teal);
+        }
+
+        .shift-pm .shift-people li::before {
+            background: var(--gold);
+        }
+
+        .shift-aux .shift-people li::before {
+            background: var(--sage);
+        }
+
+        .schedule-note {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            line-height: 1.6;
+            color: var(--sage);
+            margin: 1.1em 0 0;
+        }
+
+        @media (min-width: 900px) {
+            .schedule-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto auto auto auto;
+                gap: 0.8rem;
+            }
+
+            .day-card {
+                grid-row: span 4;
+            }
+
+            .shift,
+            .day-head {
+                padding-left: 0.95rem;
+                padding-right: 0.95rem;
+            }
+
+            /* Alinea las filas AM / PM / Auxiliar entre las tres columnas */
+            @supports (grid-template-rows: subgrid) {
+                .day-card {
+                    display: grid;
+                    grid-template-rows: subgrid;
+                }
+            }
+        }
+
         /* ---------- Breakpoints ---------- */
         /* Desde 760px hay espacio de sobra: se oculta el botón y la
            navegación vuelve a ser una barra horizontal normal. */
@@ -929,6 +1140,207 @@
                     </svg>
                     Descargar PDF
                 </a>
+            </div>
+
+            <!-- ---------- Calendario de asignaciones ---------- -->
+            <div class="schedule" aria-labelledby="schedule-title">
+                <div class="schedule-head">
+                    <p class="schedule-kicker">Departamento de Alojamiento</p>
+                    <h3 class="schedule-title" id="schedule-title">Calendario de asignaciones</h3>
+                    <p class="schedule-desc">Turnos por jornada durante los tres días de la asamblea. Cada día cuenta
+                        además con un hermano auxiliar disponible para reemplazos.</p>
+                </div>
+
+                <!-- Plantilla de iconos reutilizables (no se renderiza) -->
+                <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+                    <defs>
+                        <symbol id="ico-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3.2" y="4.8" width="17.6" height="16" rx="2.4"/>
+                            <path d="M3.2 9.6h17.6M8 3.2v3.2M16 3.2v3.2"/>
+                        </symbol>
+                        <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/>
+                        </symbol>
+                        <symbol id="ico-sunset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 15.5a4 4 0 0 1 8 0"/>
+                            <path d="M2.6 15.5h2.6M18.8 15.5h2.6M5.6 9.4l1.8 1.8M18.4 9.4l-1.8 1.8M12 6.2v3"/>
+                            <path d="M3.4 19.4h17.2"/>
+                        </symbol>
+                        <symbol id="ico-relief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8.4" r="3.4"/>
+                            <path d="M5.6 20.2a6.4 6.4 0 0 1 12.8 0"/>
+                        </symbol>
+                    </defs>
+                </svg>
+
+                <div class="schedule-grid">
+                    <article class="day-card">
+                        <header class="day-head">
+                            <svg class="day-icon" aria-hidden="true" focusable="false">
+                                <use href="#ico-calendar"/>
+                            </svg>
+                            <div>
+                                <h4 class="day-name">Viernes</h4>
+                                <p class="day-date">14 de agosto</p>
+                            </div>
+                        </header>
+
+                        <div class="shift shift-am">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-sun"/>
+                                </svg>
+                                Jornada AM
+                            </p>
+                            <p class="shift-time">8:00 – 12:10 hrs</p>
+                            <ul class="shift-people">
+                                <li>Felipe Cuevas</li>
+                                <li>Tiago Soler</li>
+                            </ul>
+                        </div>
+
+                        <div class="shift shift-pm">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-sunset"/>
+                                </svg>
+                                Jornada PM
+                            </p>
+                            <p class="shift-time">12:10 – 16:15 hrs</p>
+                            <ul class="shift-people">
+                                <li>Juan Carelli</li>
+                                <li>Alejandro de León</li>
+                            </ul>
+                        </div>
+
+                        <div class="shift shift-aux">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-relief"/>
+                                </svg>
+                                Auxiliar
+                            </p>
+                            <p class="shift-time">Reemplazo en cualquiera de las 2 jornadas</p>
+                            <ul class="shift-people">
+                                <li>Abel Márquez</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="day-card">
+                        <header class="day-head">
+                            <svg class="day-icon" aria-hidden="true" focusable="false">
+                                <use href="#ico-calendar"/>
+                            </svg>
+                            <div>
+                                <h4 class="day-name">Sábado</h4>
+                                <p class="day-date">15 de agosto</p>
+                            </div>
+                        </header>
+
+                        <div class="shift shift-am">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-sun"/>
+                                </svg>
+                                Jornada AM
+                            </p>
+                            <p class="shift-time">8:00 – 12:10 hrs</p>
+                            <ul class="shift-people">
+                                <li>Felipe Cuevas</li>
+                                <li>Tiago Soler</li>
+                            </ul>
+                        </div>
+
+                        <div class="shift shift-pm">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-sunset"/>
+                                </svg>
+                                Jornada PM
+                            </p>
+                            <p class="shift-time">12:10 – 16:15 hrs</p>
+                            <ul class="shift-people">
+                                <li>Rosemir Monte</li>
+                                <li>Abel Márquez</li>
+                            </ul>
+                        </div>
+
+                        <div class="shift shift-aux">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-relief"/>
+                                </svg>
+                                Auxiliar
+                            </p>
+                            <p class="shift-time">Reemplazo en cualquiera de las 2 jornadas</p>
+                            <ul class="shift-people">
+                                <li>Eduardo Pereira</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="day-card">
+                        <header class="day-head">
+                            <svg class="day-icon" aria-hidden="true" focusable="false">
+                                <use href="#ico-calendar"/>
+                            </svg>
+                            <div>
+                                <h4 class="day-name">Domingo</h4>
+                                <p class="day-date">16 de agosto</p>
+                            </div>
+                        </header>
+
+                        <div class="shift shift-am">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-sun"/>
+                                </svg>
+                                Jornada AM
+                            </p>
+                            <p class="shift-time">8:00 – 12:10 hrs</p>
+                            <ul class="shift-people">
+                                <li>Eduardo Pereira</li>
+                                <li>Tiago Soler</li>
+                            </ul>
+                        </div>
+
+                        <div class="shift shift-pm">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-sunset"/>
+                                </svg>
+                                Jornada PM
+                            </p>
+                            <p class="shift-time">12:10 – 16:15 hrs</p>
+                            <ul class="shift-people">
+                                <li>Juan Carelli</li>
+                                <li>Alejandro de León</li>
+                            </ul>
+                        </div>
+
+                        <div class="shift shift-aux">
+                            <p class="shift-label">
+                                <svg class="shift-icon" aria-hidden="true" focusable="false">
+                                    <use href="#ico-relief"/>
+                                </svg>
+                                Auxiliar
+                            </p>
+                            <p class="shift-time">Reemplazo en cualquiera de las 2 jornadas</p>
+                            <ul class="shift-people">
+                                <li>Rosemir Monte</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="schedule-note">Cualquier cambio de turno debe coordinarse previamente con el
+                    Superintendente de Alojamiento.</p>
             </div>
         </div>
     </section>
